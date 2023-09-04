@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Clientes</h1>
+
+<div id="clientes">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clientes.each do |cliente| %>
+        <tr>
+          <td><%= cliente.nombre %></td>
+          <td><%= cliente.email %></td>
+          <td>
+            <%= link_to "Mostrar", cliente, class: "btn btn-primary btn-sm" %>
+            <%= link_to "Editar", edit_cliente_path(cliente), class: "btn btn-warning btn-sm" %>
+            <%= link_to "Eliminar", cliente, method: :delete, data: { confirm: "¿Estás seguro de que deseas eliminar este cliente?" }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "Nuevo Cliente", new_cliente_path, class: "btn btn-success" %>

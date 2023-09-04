@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Películas Arrendadas</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Género</th>
+      <th>Cliente</th>
+      <th class="text-right">Acciones</th> <!-- Agregamos la clase text-right para alinear a la derecha -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @peliculas_arrendadas.each do |pelicula| %>
+      <tr>
+        <td><%= pelicula.titulo %></td>
+        <td><%= pelicula.genero %></td>
+        <td><%= pelicula.cliente.nombre if pelicula.cliente %></td>
+        <td class="text-right"> <!-- Agregamos la clase text-right para alinear a la derecha -->
+          <%= link_to "Mostrar", pelicula, class: "btn btn-primary btn-sm" %>
+          <%= link_to "Editar", edit_pelicula_path(pelicula), class: "btn btn-warning btn-sm" %>
+          <%= link_to "Eliminar", pelicula, method: :delete, data: { confirm: "¿Estás seguro de que deseas eliminar esta película?" }, class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

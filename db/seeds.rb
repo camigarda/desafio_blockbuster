@@ -1,7 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+# Crear clientes con Faker
+8.times do
+    Cliente.create(
+      nombre: Faker::Name.name,
+      email: Faker::Internet.email
+    )
+  end
+  
+  puts "Clientes generados"
+  
+# Generar películas
+50.times do
+    pelicula = Pelicula.create(
+      titulo: Faker::Lorem.words(number: 3).join(" "),
+      genero: Faker::Book.genre 
+    )
+  
+      pelicula.update(cliente: Cliente.all.sample) if rand < 0.3
+  end
+  
+  puts "Datos de películas generados"
+
+# Generar películas disponibles
+50.times do
+    pelicula = Pelicula.create(
+      titulo: Faker::Lorem.words(number: 3).join(" "),
+      genero: Faker::Book.genre,
+      cliente_id: nil
+    )
+  end
+  
+  puts "Películas disponibles generadas"
+  

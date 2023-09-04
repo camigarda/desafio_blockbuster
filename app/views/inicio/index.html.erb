@@ -1,0 +1,21 @@
+<div class="jumbotron text-center">
+  <h1 class="display-4">¡Bienvenido a Blockbuster!</h1>
+  <p class="lead">La mejor selección de películas en un solo lugar.</p>
+  <%= link_to "Ver detalle de Películas", peliculas_path, class: "btn btn-primary btn-lg" %>
+</div>
+
+<h3 class="jumbotron text-center">Películas Disponibles</h3>
+
+<div class="row">
+  <% @peliculas.each do |pelicula| %>
+    <div class="col-md-4 mb-4"> <!-- Agregamos clase "mb-4" para separar las tarjetas -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= pelicula.titulo %></h5>
+          <p class="card-text">Género: <%= pelicula.genero %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
